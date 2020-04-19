@@ -1,7 +1,7 @@
-import time
+#import time
 import numpy as np 
 import sys
-from scipy.cluster import hierarchy
+#from scipy.cluster import hierarchy
 from heapq import heappush, heappushpop
 from sklearn.metrics.pairwise import pairwise_distances
 from sklearn.datasets import load_iris
@@ -186,30 +186,12 @@ TREE_BUILDER = dict(
     single=single_tree)
 
 def get_descendent(node, children,n_leaves):
-    """
-    Function returning all the descendent leaves of a set of nodes in the tree.
-    Parameters
-    ----------
-    node : integer
-        The node for which we want the descendents.
-    children : list of pairs, length n_nodes
-        The children of each non-leaf node. Values less than `n_samples` refer
-        to leaves of the tree. A greater value `i` indicates a node with
-        children `children[i - n_samples]`.
-    n_leaves : integer
-        Number of leaves.
-    Returns
-    -------
-    descendent : list of int
-    """
+    
     ind = [node]
     if node < n_leaves:
         return ind
     descendent = []
 
-    # It is actually faster to do the accounting of the number of
-    # elements is the list ourselves: len is a lengthy operation on a
-    # chained list
     n_indices = 1
 
     while n_indices:
