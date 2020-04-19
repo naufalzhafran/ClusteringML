@@ -1,4 +1,4 @@
-#import time
+import time
 import numpy as np 
 import sys
 #from scipy.cluster import hierarchy
@@ -88,6 +88,7 @@ def hc_cluster(X,metric='euclidean',linkage='single'):
                             cluster_2 = c2
 
                         last_cluster = c2
+                        
         elif (linkage=="centroid"):
             for c1 in cluster_group:
                 c1_means = cluster_group[c1]
@@ -238,7 +239,6 @@ class MyAgglomerative():
         
         self.lables_ = cut_tree(self.n_clusters, self.children_, self.n_leaves_)
 
-        return self
 
     def fit_predict(self,X):
         self.fit(X)
@@ -247,7 +247,7 @@ class MyAgglomerative():
 
 
 #test
-"""
+#"""
 if __name__ == '__main__':
     
     X = np.array([[5,3],
@@ -262,9 +262,9 @@ if __name__ == '__main__':
         [80,91],])
     
     dataset = load_iris()
-    X = dataset.data
+    #X = dataset.data
     
-    cluster = MyAgglomerative(n_clusters=3,affinity='euclidean',linkage='single')
+    cluster = MyAgglomerative(n_clusters=3,affinity='euclidean',linkage='average')
     tic = time.perf_counter()
     cluster.fit(X)
     toc = time.perf_counter()
